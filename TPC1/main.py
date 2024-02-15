@@ -66,6 +66,7 @@ def gen_home(info_dir: str):
     res = top
 
     for _, _, filenames in os.walk(info_dir):
+        filenames.sort()
         for filename in filenames:
             
             path = os.path.join(info_dir, filename)
@@ -124,8 +125,8 @@ def gen_street_page(street_name: str, nr: str, description: str, images: list[st
                 <i class="bi bi-arrow-left-short m-auto w-fit"></i>
             </a>
 
-            <div class="flex text-5xl font-bold space-x-8">
-                <i class="bi bi-signpost-fill text-blue-500">{nr}</i>
+            <div class="flex text-5xl font-bold space-x-8 items-center">
+                <i class="bi bi-signpost-fill text-blue-500 min-w-fit">{nr}</i>
                 <p>{street_name}</p>
             </div>
             <div class="text-justify">
@@ -173,6 +174,7 @@ def gen_street_page(street_name: str, nr: str, description: str, images: list[st
     for b in buildings:
         bld += f"""
                     <li class="space-y-2 pb-4 border-b border-neutral-300">
+                        <p class="flex items-center space-x-2"><i class="bi bi-house-fill text-xl text-blue-500"></i><span class='font-bold'>{b["número"]}</span></p>
                         <p class="flex items-center space-x-2"><i class="bi bi-person-fill text-xl text-blue-500"></i><span>{b["enfiteuta"]}</span></p>
                         <p class="flex items-center space-x-2"><i class="bi bi-coin text-xl text-blue-500"></i><span>{b["foro"]}</span></p>
                         <p class="flex items-center space-x-2"><i class="bi bi-info-circle-fill text-xl text-blue-500"></i><span>{b["desc"]}</span></p>
@@ -205,13 +207,16 @@ def gen_street_pages(info_dir: str):
                 images.append("MapaRuas-materialBase/imagem/" + f.find("imagem").attrib["path"].split("/")[2])
 
             buildings = []
-            bld_child = root.find("corpo").find("lista-casas").findall("casa") if root.find("corpo").find("lista-casas") is not None else []
-            for b in bld_child:
-                buildings.append({
-                    "enfiteuta": b.find("enfiteuta").text if b.find("enfiteuta") is not None else "Não disponível",
-                    "foro": b.find("foro").text if b.find("foro") is not None else "Não disponível",
-                    "desc": get_desc_text(b.find("desc").findall("para"), False) if b.find("desc") is not None else "Não disponível"
-                })
+            house_list_child = root.find("corpo").findall("lista-casas") if root.find("corpo").find("lista-casas") is not None else []
+            for l in house_list_child:
+                bld_child = l.findall("casa") if root.find("corpo").find("lista-casas").find("casa") is not None else []
+                for b in bld_child:
+                    buildings.append({
+                        "número": b.find("número").text if b.find("número") is not None else "Não disponível",
+                        "enfiteuta": b.find("enfiteuta").text if b.find("enfiteuta") is not None else "Não disponível",
+                        "foro": b.find("foro").text if b.find("foro") is not None else "Não disponível",
+                        "desc": get_desc_text(b.find("desc").findall("para"), False) if b.find("desc") is not None else "Não disponível"
+                    })
 
             file_name = street_name.replace(" ", "")
             url = f"MRB-{nr}-{file_name}.html"
