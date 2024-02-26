@@ -68,12 +68,22 @@ function genCityPage(city) {
                 <h1>Mapa Virtual</h1>
             </header>
 
-            <main class="flex flex-col px-64 py-8 mb-auto overflow-y-scroll overflow-x-auto space-y-8">
-                <span class="flex space-x-4 items-center mx-auto">
-                    <i class="bi bi-geo-fill text-orange-500 text-5xl"></i> 
-                    <p class="text-6xl font-bold">${city.nome}</p>
-                </span>
-                <div class="grid grid-cols-2 gap-4 w-[48rem] mx-auto">
+            <main class="flex flex-col px-[50rem] py-8 mb-auto overflow-y-scroll overflow-x-auto space-y-8">
+                <div class="flex place-content-between mx-auto w-full items-center">
+                    <a                    
+                        class="flex w-16 h-16 rounded-xl bg-orange-100 text-orange-500 text-3xl items-center text-center hover:bg-orange-500 hover:text-white transition-all"
+                        href="/cidades"    
+                    >
+                        <p class="mx-auto">
+                            <-
+                        </p>
+                    </a>
+                    <span class="flex space-x-4 items-center mx-auto">
+                        <i class="bi bi-geo-fill text-orange-500 text-5xl"></i> 
+                        <p class="text-6xl font-bold">${city.nome}</p>
+                    </span>
+                </div>                
+                <div class="grid grid-cols-2 gap-4 w-full mx-auto">
                     <div class="flex flex-col bg-white text-center shadow-sm rounded-xl border p-4 text-lg space-y-4 space-x-4">
                         <span class="flex items-center space-x-2 mx-auto text-xl">
                             <i class="bi bi-person-standing text-orange-500"></i> 
