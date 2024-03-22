@@ -1,0 +1,29 @@
+doctype html
+head
+  title="Compositores Musicais | " + title
+  meta(charset="UTF-8")
+  meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  script(src="https://cdn.tailwindcss.com")
+  link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css")
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap")
+body(class="flex flex-col h-screen justify-between bg-neutral-100" style="font-family: Inter, sans-serif;")
+  a(href="/compositores" class="w-full border-b bg-white shadow-sm p-4 flex flex-col space-y-6 place-content-center items-center")
+    span(class="flex space-x-3 text-orange-800/80 font-medium text-3xl")
+      i(class="bi bi-music-note-list")
+      h1 Compositores Musicais
+  main(class="py-8 px-32 mb-auto mx-auto overflow-y-scroll overflow-x-auto space-y-8")
+    if title === "Compositores"
+      div(class="flex place-content-center")
+        a(href="compositores/adicionar" class="w-64 rounded-xl flex space-x-2 items-center place-content-center bg-orange-800/80 text-white p-4 font-medium shadow-sm hover:shadow-md transition-all")
+          i(class="bi bi-person-plus-fill")
+          p Adicionar Compositor
+    if title === "Compositores" || title === "Períodos"
+      div(class="grid grid-cols-4 gap-4")
+        block content
+    else
+      div
+        block content
+  footer(class="w-full bg-white border-t shadow-sm font-medium text-center p-4")
+    p &copy; 2024 Diogo Matos. All rights reserved.
