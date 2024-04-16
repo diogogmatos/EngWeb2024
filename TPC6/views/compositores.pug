@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    each c in compositores
+        a(href="/compositores/" + c._id class="bg-white w-full px-6 p-4 rounded-xl border flex flex-col place-content-center shadow-sm hover:shadow-md hover:-translate-y-1 hover:cursor-pointer transition-all")
+            span(class="flex space-x-2 items-center text-xl font-medium mx-auto")
+                i(class="bi bi-person-fill")
+                p(class="text-center") #{c.nome}
+            span(class="flex space-x-2 items-center text-neutral-400 mx-auto")
+                i(class="bi bi-music-note")
+                p #{c.periodo}

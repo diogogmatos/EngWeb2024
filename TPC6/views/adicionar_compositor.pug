@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    form(action="/compositores/adicionar" method="post" class="flex flex-col space-y-4")
+        input(type="text" name="nome" placeholder="Nome do Compositor" class="w-96 p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-800/80 focus:border-transparent transition-all")
+        input(type="text" name="periodo" placeholder="Período do Compositor" class="w-96 p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-800/80 focus:border-transparent transition-all")
+        input(type="text" name="dataNasc" placeholder="Data de Nascimento" class="w-96 p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-800/80 focus:border-transparent transition-all")
+        input(type="text" name="dataObito" placeholder="Data de Óbito" class="w-96 p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-800/80 focus:border-transparent transition-all")
+        textarea(name="bio" placeholder="Biografia" class="w-96 p-3 rounded-xl border shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-800/80 focus:border-transparent transition-all")
+        button(type="submit" class="w-96 p-3 rounded-xl border bg-orange-800/80 text-white font-medium shadow-sm hover:shadow-md transition-all space-x-2")
+            i(class="bi bi-person-plus-fill")
+            span Adicionar Compositor

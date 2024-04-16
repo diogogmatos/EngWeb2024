@@ -1,4 +1,4 @@
-# TPC5 - Compositores Musicais (Express.js + PUG)
+# TPC5 - Compositores Musicais (Express.js + PUG + JSON Server)
 
 > 📅 2024-03-22
 
